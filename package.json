@@ -11,11 +11,14 @@
     "zebus",
     "zoolon"
   ],
-  "node-red":{
-    "nodes":{
-      "zebus":"zebus.js"
+  "node-red": {
+    "nodes": {
+      "zebus": "zebus.js"
     }
   },
   "author": "wenchangshou<wenchangshou@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "daemonlib-ts": "^2.0.2"
+  }
 }

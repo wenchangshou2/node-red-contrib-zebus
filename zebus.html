@@ -1,12 +1,107 @@
+<script type="text/javascript">
+    RED.nodes.registerType('zebus',{
+        category: 'config',
+        color: 'rgb(218,196,180)',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"zebus";
+        }
+    });
+</script>
+
 <script type="text/html" data-template-name="zebus">
     <div class="form-row">
-        <label for="node-config-input-name"><i class="fa fa-tag"></i><span
-                data-i18n="node-red:common.label.name"></span></label>
-        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+        <label for='node-input-address'><i class="fa fa-tag"></i>Address</label>
+        <input type="text" id="node-input-address" placeholder="Address">
+    </div>
+    <div class="form-row">
+        <label for="node-input-httpport"><i class="fa fa-tag"></i>httpport</label>
+        <input type="text" id="node-input-httpport" placeholder="httpport">
+    </div>
+    <div class="form-row">
+        k
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-proto"><i class="fa fa-code-fork"></i><span data-i18n="zebus.label.proto"></span></label>
+        <select type="text" style="width:100px" id="node-config-input-zebusProto">
+            <option value="text">text</option>
+            <option value="binary">binary</option>
+        </select>
     </div>
 </script>
+
+<script type="text/html" data-help-name="zebus">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>>
+<script type="text/html" data-template-name="zebus in">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-receiverName"><i class="fa fa-tag"></i> <span>注册名</span></label>
+        <input type="text" id="node-input-receiverName" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-zebus"><i class="fa fa-tag"></i><span>zebus</span></label>
+        <input type="text" id="node-input-zebus">
+    </div>
+</script>
+<script type="text/html" data-help-name="zebus in">
+    <h1>zebus in</h1>
+</script>
 <script type="text/javascript">
-    function getVersion() {
-        return '1.0';
-    }
+    RED.nodes.registerType('zebus in',{
+        category:'network',
+        color:'rgb(218,196,180)',
+        defaults:{
+            name:{value:""},
+            receiverName:{value:"",required:true},
+            zebus:{type:"zebus",required:true}
+        },
+        inputs:0,
+        outputs:1,
+        align:"center",
+        label:function(){
+            return this.name||"zebus in"
+        }
+    })
+</script>
+
+<script type="text/html" data-template-name="zebus getclient">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span
+                data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+        <div class="form-row">
+            <label for="node-input-zebus"><i class="fa fa-server"></i> <span>zebus</span></label>
+            <input type="text" id="node-input-zebus">
+        </div>
+</script>
+<script type="text/html" data-help-name="zebus getclient">
+    <h1>zebus getClient</h1>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('zebus getclient',{
+        category:'function',
+        color:'rgb(218,196,180)',
+        paletteLabel: 'zebus getclient',
+        defaults:{
+            zebus:{type:"zebus",required:true}
+        },
+        inputs:1,
+        outputs:1,
+        align:"center",
+        label:function(){
+            return this.name||"zebus getclient"
+        }
+    })
 </script>
